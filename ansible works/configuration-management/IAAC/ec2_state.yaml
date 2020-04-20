@@ -1,0 +1,11 @@
+---
+- name: Playbook for terminating, starting, stopping, restarting
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  become: false
+  tasks:
+    - ec2:
+        instance_ids: "{{instance_ids}}"
+        state: "{{state}}"
+        region: "{{region}}"

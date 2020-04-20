@@ -1,0 +1,20 @@
+---
+- name: Playbook for tasks
+  hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Download wordpress
+      get_url:
+        url: "https://wordpress.org/wordpress-5.2.3.zip"
+        dest: /tmp/
+    - name: Install unzip
+      package: 
+        name: unzip 
+        state: present
+    - name: Unzip
+      unarchive:
+        src: /tmp/wordpress-5.2.3.zip
+        dest: /tmp
+        remote_src: yes
+      ignore_errors: true

@@ -1,0 +1,9 @@
+---
+- name: Playbook for packages
+  hosts: all
+  become: yes
+  become_method: sudo
+  roles:
+    - package
+    - users
+    - backup
